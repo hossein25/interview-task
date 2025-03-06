@@ -9,16 +9,16 @@ interface MarketSectionProps {
   onPageChange: (page: number) => void;
 }
 
-export function MarketSection({ 
-  markets, 
-  currencyCode, 
-  currentPage, 
-  onPageChange 
+export function MarketSection({
+  markets,
+  currencyCode,
+  currentPage,
+  onPageChange,
 }: MarketSectionProps) {
   const itemsPerPage = 10;
 
   const filteredMarkets = markets.filter(
-    (market) => market.currency2.code === currencyCode
+    (market) => market.currency2.code === currencyCode,
   );
 
   const totalPages = Math.ceil(filteredMarkets.length / itemsPerPage);
@@ -28,7 +28,7 @@ export function MarketSection({
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {currentMarkets.map((market) => (
           <MarketCard key={market.id} market={market} />
         ))}
